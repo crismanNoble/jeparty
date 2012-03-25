@@ -44,7 +44,8 @@ function reSizeCell() {
     var textH = Math.floor(cellH * .53);
     //use the varibles and write them into the css
     $('#wrap').css('width', fullW);
-    //$('#wrap').css('margin-top', 2*gutter);
+    //$('body').css('padding-top', 2*gutter);
+    $('#wrap').css('margin-top', 2*gutter);
     console.log(winW+'/'+cellW+'/'+cellH+'/'+gutter);
     //cell styles
     $('.cell').css('width', cellW);
@@ -58,7 +59,7 @@ function reSizeCell() {
     $('.top').css('width', cellW - 2*halfGutter);
     $('.top').css('height', cellH - 2*halfGutter);
     $('.top').css('padding', halfGutter);
-    $('.top').css('margin-top', 2*gutter);
+    //$('.top').css('margin-top', 2*gutter);
     //the question styles
     $('.question').css('width',fullW);
     $('.question').css('height',fullH);
@@ -66,9 +67,15 @@ function reSizeCell() {
     $('.questionText').css('width', cellW * 4 + 10*gutter);
     $('.questionText').css('margin-left', cellW);
     $('.questionText').css('margin-top', cellH);
+    $('.question').css('padding-bottom', gutter);
     //the answer styles
     $('.answer').css('width',fullW);
     $('.answer').css('height',fullH);
+    $('.answer').css('padding-bottom', gutter);
+    $('.answerText').css('font-size', cellH);
+    $('.answerText').css('width', cellW * 4 + 10*gutter);
+    $('.answerText').css('margin-left', cellW);
+    $('.answerText').css('margin-top', cellH);
 }
 
 function questionPop(who) {
