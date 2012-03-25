@@ -1,0 +1,82 @@
+* {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border: 0px 0px 0px 0px;
+}
+
+body {
+	background: #f4f4f4;
+	width: 100%;
+	height: 100%;
+}
+
+#wrap {
+	position: relative;
+	margin: 0 auto 0 auto;
+	font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+
+}
+
+.cell {
+	background: blue;
+	float: left;
+	color: orange;
+	text-align: center;
+	font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+}
+
+.top {
+	color: white;
+}
+
+.question {
+	display: none;
+	background: gray;
+	color: black;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	left: 0;
+}
+
+.questionText {
+	background: blue;
+	margin: 20% auto;
+}
+
+.answer {
+	display: none;
+	background: blue;
+	color: black;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 500;
+}
+
+.close {
+	color: white;
+	font-family: arial;
+	font-weight: bold;
+	position: absolute;
+	top: 15;
+	right: 15;
+}
+
+.proceed {
+	background: black;
+	color: white;
+	position: absolute;
+	bottom: 0;
+}
+
+/*
+
+title, bold and sans serif
+
+
+
+Question is the wierd 60 fonts
+
+
+*/
