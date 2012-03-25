@@ -1,4 +1,3 @@
-
 //set minimum witdh and height, for browsers without defaults
 var winW = 630, winH = 460;
 
@@ -6,12 +5,13 @@ $(function() {
     //onload do these things
     reSizeCell();
     writeValues();
-
+    //watch for a click on a cell
     $('.cell').click(function(){
         var who = this.id;  
         questionPop(who);
     });
-
+    //watch for a click on the proceed
+    //need to have a shortcut here as well
     $('.proceed').click(function(){
         var who = $(this).parent()[0].id;
         //$(this).parent().hide('slow');
@@ -38,12 +38,14 @@ function reSizeCell() {
     var cellW = Math.floor((.9 * winW )/6);
     var cellH = Math.floor(cellW/1.618);
     var gutter = Math.floor((.1 * winW)/12-1);
+    var halfGutter = Math.floor(gutter/2);
     var fullW = 6 * cellW + 12 * gutter;
     var fullH = 6 * cellH + 12 * gutter;
-    var textH = Math.floor(cellH * .55);
+    var textH = Math.floor(cellH * .53);
     //use the varibles and write them into the css
     $('#wrap').css('width', fullW);
-    console.log(winW+'/'+cellW+'/'+cellH+'/'+gutter)
+    //$('#wrap').css('margin-top', 2*gutter);
+    console.log(winW+'/'+cellW+'/'+cellH+'/'+gutter);
     //cell styles
     $('.cell').css('width', cellW);
     $('.cell').css('height', cellH);
@@ -53,6 +55,10 @@ function reSizeCell() {
     //the category row styles
     $('.top').css('font-size', textH/2);
     $('.top').css('line-height', textH/1.8+'px');
+    $('.top').css('width', cellW - 2*halfGutter);
+    $('.top').css('height', cellH - 2*halfGutter);
+    $('.top').css('padding', halfGutter);
+    $('.top').css('margin-top', 2*gutter);
     //the question styles
     $('.question').css('width',fullW);
     $('.question').css('height',fullH);
@@ -68,13 +74,13 @@ function reSizeCell() {
 function questionPop(who) {
     var whoq = '#'+who+'q';
     console.log(whoq);
-    $(whoq).show();
+    $(whoq).show('slow');
 }
 
 function answerPop(who) {
     var whoa = '#' + who.substring(0, who.length - 1) + 'a';
     console.log(whoa);
-    $(whoa).show().animate();
+    $(whoa).show();
 }
 
 function getWindowSize() {
