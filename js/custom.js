@@ -2,6 +2,14 @@
 var winW = 630, winH = 460;
 
 $(function() {
+       //for eyeboard shortcuts 
+        $(document).ready(function() {
+            $(document).shortkeys({
+                'G':          function () { console.log('g'); },
+                'M':          function () { console.log('M'); }
+            });
+        });
+    
     //onload do these things
     reSizeCell();
     writeValues();
