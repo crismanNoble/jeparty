@@ -1,10 +1,6 @@
-//portions of the code via http://www.javascripter.net/faq/browserw.htm
+
+//set minimum witdh and height, for browsers without defaults
 var winW = 630, winH = 460;
-
-//start new code
-
-//document.writeln(cellW+'x'+cellH);
-//document.writeln('gutter:'+gutter);
 
 $(function() {
     //onload do these things
@@ -35,58 +31,54 @@ $(window).resize(function() {
 
 });
 
-
-
 function reSizeCell() {
+    //first find the window size
     getWindowSize();
+    //determine some of the depndant sizes
     var cellW = Math.floor((.9 * winW )/6);
     var cellH = Math.floor(cellW/1.618);
     var gutter = Math.floor((.1 * winW)/12-1);
     var fullW = 6 * cellW + 12 * gutter;
     var fullH = 6 * cellH + 12 * gutter;
     var textH = Math.floor(cellH * .55);
+    //use the varibles and write them into the css
+    $('#wrap').css('width', fullW);
+    console.log(winW+'/'+cellW+'/'+cellH+'/'+gutter)
+    //cell styles
     $('.cell').css('width', cellW);
     $('.cell').css('height', cellH);
     $('.cell').css('margin', gutter);
     $('.cell').css('font-size', textH);
     $('.cell').css('line-height', cellH+'px');
-
+    //the category row styles
     $('.top').css('font-size', textH/2);
     $('.top').css('line-height', textH/1.8+'px');
-
+    //the question styles
     $('.question').css('width',fullW);
     $('.question').css('height',fullH);
-
-    $('.answer').css('width',fullW);
-    $('.answer').css('height',fullH);
-
     $('.questionText').css('font-size', cellH);
     $('.questionText').css('width', cellW * 4 + 10*gutter);
     $('.questionText').css('margin-left', cellW);
     $('.questionText').css('margin-top', cellH);
-
-    $('#wrap').css('width', fullW);
-    console.log(winW+'/'+cellW+'/'+cellH+'/'+gutter)
+    //the answer styles
+    $('.answer').css('width',fullW);
+    $('.answer').css('height',fullH);
 }
 
 function questionPop(who) {
     var whoq = '#'+who+'q';
     console.log(whoq);
-    
     $(whoq).show();
 }
 
 function answerPop(who) {
     var whoa = '#' + who.substring(0, who.length - 1) + 'a';
     console.log(whoa);
-
     $(whoa).show().animate();
 }
 
-
-
 function getWindowSize() {
-
+    //portions of the code via http://www.javascripter.net/faq/browserw.htm
     if (document.body && document.body.offsetWidth) {
      winW = document.body.offsetWidth;
      winH = document.body.offsetHeight;
@@ -101,9 +93,9 @@ function getWindowSize() {
      winW = window.innerWidth;
      winH = window.innerHeight;
     }
-
 };
 
+//this wil write the money values, depending of if it is double jeapardy
 function writeValues(roundType) {
     $('.200').html('$200');
     $('.400').html('$400');
