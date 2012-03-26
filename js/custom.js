@@ -2,14 +2,17 @@
 var winW = 630, winH = 460;
 
 $(function() {
-       //for eyeboard shortcuts 
-        $(document).ready(function() {
-            $(document).shortkeys({
-                'G':          function () { console.log('g'); },
-                'M':          function () { console.log('M'); }
-            });
-        });
-    
+    //setup keyboard shortcuts 
+     $(document).shortkeys({
+        'G': function () { console.log('g'); },
+        'M': function () { console.log('M'); },
+        'U': function () { unlockAnswers(); },
+        'Q': function () { race('team1'); },
+        'P': function () { race('team2'); }
+    });
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) { closeAll(); }
+    });
     //onload do these things
     reSizeCell();
     writeValues();
@@ -17,6 +20,7 @@ $(function() {
     $('.cell').click(function(){
         var who = this.id;  
         questionPop(who);
+        lockAnswers();
     });
     //watch for a click on the proceed
     //need to have a shortcut here as well
@@ -29,14 +33,15 @@ $(function() {
 
     $('.close').click(function(){
         console.log('closer');
-        $(this).parent().hide('slow');
+        closeAll();
+        //$(this).parent().hide('slow');
     });
 });
 
-$(window).resize(function() {
-  //resize just happened, pixels changed
-    reSizeCell();
 
+$(window).resize(function() {
+  //resize just happened, pixels changed, change the pixels!
+    reSizeCell();
 });
 
 function reSizeCell() {
@@ -86,6 +91,30 @@ function reSizeCell() {
     $('.answerText').css('margin-top', cellH);
 }
 
+var answerable = 0;
+
+function unlockAnswers() {
+    answerable = 1;
+    console.log(answerable);
+}
+
+function lockAnswers() {
+    answerable = 0;
+    console.log(answerable);
+}
+
+function race(team) {
+    if (answerable == 1){
+        console.log(team);
+        answerable = 0;
+    }
+}
+
+function closeAll() {
+    //hide both the question and the answer
+    $('.question').hide('slow');
+    $('.answer').hide('slow');
+}
 function questionPop(who) {
     var whoq = '#'+who+'q';
     console.log(whoq);
@@ -96,6 +125,9 @@ function answerPop(who) {
     var whoa = '#' + who.substring(0, who.length - 1) + 'a';
     console.log(whoa);
     $(whoa).show();
+    var who = whoa.substring(0, whoa.length - 1);
+    $(who).addClass('expired');
+    console.log(who + 'should have class expired');
 }
 
 function getWindowSize() {
