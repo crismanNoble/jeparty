@@ -81,19 +81,24 @@ function reSizeCell() {
     $('.top').css('width', cellW - 2*halfGutter);
     $('.top').css('height', cellH - 2*halfGutter);
     $('.top').css('padding', halfGutter);
-    //$('.top').css('margin-top', 2*gutter);
+    //the teams styles
+    $('.teams').css('width', cellW*3 + 4*gutter);
+    $('.teams').css('margin', gutter);
+    $('.teams').css('font-size', textH);
     //the question styles
-    $('.question').css('width',fullW);
-    $('.question').css('height',fullH);
+    $('.question').css('width',fullW-2*gutter);
+    $('.question').css('height',fullH-2*gutter);
+    $('.question').css('margin',gutter);
     $('.questionText').css('font-size', cellH);
     $('.questionText').css('width', cellW * 4 + 10*gutter);
     $('.questionText').css('margin-left', cellW);
     $('.questionText').css('margin-top', cellH);
-    $('.question').css('padding-bottom', gutter);
+
+    $('.proceed').css('width', cellW*3 + 4*gutter);
     //the answer styles
-    $('.answer').css('width',fullW);
-    $('.answer').css('height',fullH);
-    $('.answer').css('padding-bottom', gutter);
+    $('.answer').css('width',fullW-2*gutter);
+    $('.answer').css('height',fullH-2*gutter);
+    $('.answer').css('margin',gutter);
     $('.answerText').css('font-size', cellH);
     $('.answerText').css('width', cellW * 4 + 10*gutter);
     $('.answerText').css('margin-left', cellW);
