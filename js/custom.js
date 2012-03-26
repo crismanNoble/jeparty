@@ -1,5 +1,7 @@
 //set minimum witdh and height, for browsers without defaults
 var winW = 630, winH = 460;
+var who = '';
+var winningTeam = 0;
 
 $(function() {
     //setup keyboard shortcuts 
@@ -7,8 +9,11 @@ $(function() {
         'G': function () { console.log('g'); },
         'M': function () { console.log('M'); },
         'U': function () { unlockAnswers(); },
+        'N': function () { answerPop(who); },
         'Q': function () { race('team1'); },
-        'P': function () { race('team2'); }
+        'P': function () { race('team2'); },
+        'C': function () { pointAdder('correct'); },
+        'V': function () { pointAdder('incorrect'); }
     });
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { closeAll(); }
@@ -18,22 +23,26 @@ $(function() {
     writeValues();
     //watch for a click on a cell
     $('.cell').click(function(){
-        var who = this.id;  
+        who = this.id;
+        if ($(this).hasClass('expired')) {
+            // prevent the question from coming up
+            return false;
+        }
         questionPop(who);
         lockAnswers();
     });
     //watch for a click on the proceed
     //need to have a shortcut here as well
     $('.proceed').click(function(){
-        var who = $(this).parent()[0].id;
         //$(this).parent().hide('slow');
+        console.log(who);
         answerPop(who);
-        $(this).parent().hide(500);
     });
 
     $('.close').click(function(){
         console.log('closer');
         closeAll();
+
         //$(this).parent().hide('slow');
     });
 });
@@ -58,7 +67,7 @@ function reSizeCell() {
     //use the varibles and write them into the css
     $('#wrap').css('width', fullW);
     //$('body').css('padding-top', 2*gutter);
-    $('#wrap').css('margin-top', 2*gutter);
+    //$('#wrap').css('margin-top', 2*gutter);
     console.log(winW+'/'+cellW+'/'+cellH+'/'+gutter);
     //cell styles
     $('.cell').css('width', cellW);
@@ -91,6 +100,11 @@ function reSizeCell() {
     $('.answerText').css('margin-top', cellH);
 }
 
+function pointAdder(value) {
+    console.log(value);
+    closeAll();
+}
+
 var answerable = 0;
 
 function unlockAnswers() {
@@ -106,6 +120,9 @@ function lockAnswers() {
 function race(team) {
     if (answerable == 1){
         console.log(team);
+        winningTeam = parseInt(team.charAt(4));
+        console.log(winningTeam);
+        $('.'+team).addClass('winner');
         answerable = 0;
     }
 }
@@ -114,7 +131,10 @@ function closeAll() {
     //hide both the question and the answer
     $('.question').hide('slow');
     $('.answer').hide('slow');
+    $('.team1').removeClass('winner');
+    $('.team2').removeClass('winner');
 }
+
 function questionPop(who) {
     var whoq = '#'+who+'q';
     console.log(whoq);
@@ -122,12 +142,9 @@ function questionPop(who) {
 }
 
 function answerPop(who) {
-    var whoa = '#' + who.substring(0, who.length - 1) + 'a';
-    console.log(whoa);
+    var whoa = '#' + who + 'a';
     $(whoa).show();
-    var who = whoa.substring(0, whoa.length - 1);
-    $(who).addClass('expired');
-    console.log(who + 'should have class expired');
+    $('#'+who).addClass('expired');
 }
 
 function getWindowSize() {
