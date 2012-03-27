@@ -56,6 +56,9 @@ $(window).resize(function() {
 function reSizeCell() {
     //first find the window size
     getWindowSize();
+    if (winW>1.3*winH){
+        winW = 1.3*winH;
+    }
     //determine some of the depndant sizes
     var cellW = Math.floor((.9 * winW )/6);
     var cellH = Math.floor(cellW/1.618);
