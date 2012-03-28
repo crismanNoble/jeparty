@@ -1,11 +1,11 @@
-todo:
-Forked by angela
 
-Add teams, collect points,add a already picked style.
+
+collect points,add a already picked style.
 Add key functionality
 Add setup screen
 
-Escape: Closes it
+Keyboard Shortcuts
+Escape: Close question or answer popup
 U: unlocks the question for answering
 Q: Team 1 answer
 P: Team 2 answer

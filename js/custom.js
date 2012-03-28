@@ -2,6 +2,10 @@
 var winW = 630, winH = 460;
 var who = '';
 var winningTeam = 0;
+var bounty = 0;
+var team1Score = 0;
+var team2Score = 0;
+var team3Score = 0;
 
 $(function() {
     //setup keyboard shortcuts 
@@ -12,6 +16,7 @@ $(function() {
         'N': function () { answerPop(who); },
         'Q': function () { race('team1'); },
         'P': function () { race('team2'); },
+        'M': function () { race('team3'); },
         'C': function () { pointAdder('correct'); },
         'V': function () { pointAdder('incorrect'); }
     });
@@ -24,11 +29,13 @@ $(function() {
     //watch for a click on a cell
     $('.cell').click(function(){
         who = this.id;
+        howMuch = $(this)[0].classList[1];
         if ($(this).hasClass('expired')) {
             // prevent the question from coming up
             return false;
-        }
+        }   
         questionPop(who);
+        setBounty(howMuch);
         lockAnswers();
     });
     //watch for a click on the proceed
@@ -108,6 +115,11 @@ function reSizeCell() {
     $('.answerText').css('margin-top', cellH);
 }
 
+function setBounty(points){
+    console.log(points + 'points availible');
+    bounty = points;
+}
+
 function pointAdder(value) {
     console.log(value);
     closeAll();
@@ -127,9 +139,9 @@ function lockAnswers() {
 
 function race(team) {
     if (answerable == 1){
-        console.log(team);
+        //console.log(team);
         winningTeam = parseInt(team.charAt(4));
-        console.log(winningTeam);
+        //console.log(winningTeam);
         $('.'+team).addClass('winner');
         answerable = 0;
     }
@@ -180,4 +192,7 @@ function writeValues(roundType) {
     $('.600').html('$600');
     $('.800').html('$800');
     $('.1000').html('$1000');
+    $('#team1Score').html('$'+team1Score);
+    $('#team2Score').html('$'+team2Score);
+    $('#team3Score').html('$'+team3Score);
 }
