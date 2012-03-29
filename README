@@ -1,16 +1,22 @@
 
 
-collect points,add a already picked style.
-Add key functionality
+TODO:
+collect points
+Add a 3 player option
+Final Jeopardy
 Add setup screen
 
 Keyboard Shortcuts
 Escape: Close question or answer popup
-U: unlocks the question for answering
+U: Unlock Question
 Q: Team 1 answer
 P: Team 2 answer
+L: Team 3 answer (not in yet)
 C: Corret Answer
 V: Incorrect Answer
+N: Show Answer
+Z: FINAL JEOPARDY
+S: FINAL JEOPARDY ANSWER!
 
 Creddits:
 http://www.colorzilla.com/gradient-editor/

@@ -112,7 +112,6 @@ body {
 
 .proceed {
 	color: white;
-
 	height: 5%;
 }
 
@@ -128,8 +127,14 @@ body {
 
 .team2 {
 	position: absolute;
-	right: 0;
 	bottom: 0;
+	left: 0;
+}
+
+.team3 {
+	position: absolute;
+	bottom: 0;
+	right: 0;
 }
 
 .cell, .teams, .question, .answer {

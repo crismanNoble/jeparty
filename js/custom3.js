@@ -6,7 +6,7 @@ var bounty = 0;
 var team1Score = 0;
 var team2Score = 0;
 var team3Score = 0;
-var numTeams = 2;
+var numTeams = 3; //change me between 2 and 3 as necessary
 
 $(function() {
     //setup keyboard shortcuts 
@@ -121,6 +121,7 @@ function reSizeCell() {
     } else if (numTeams == 3) {
         $('.proceed').css('width', cellW*2 + 2*gutter);
         $('.teams').css('width', cellW*2 + 2*gutter);
+        $('.team2').css('left', cellW*2+4*gutter);
         console.log(numTeams);
     }
     
@@ -205,6 +206,7 @@ function closeAll() {
     $('.answer').hide('slow');
     $('.team1').removeClass('winner');
     $('.team2').removeClass('winner');
+    $('.team3').removeClass('winner');
 }
 
 function sentancePop(who) {
