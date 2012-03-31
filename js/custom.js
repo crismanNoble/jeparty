@@ -11,18 +11,20 @@ var numTeams = 2;
 $(function() {
     //setup keyboard shortcuts 
      $(document).shortkeys({
-        'G': function () { console.log('g'); },
-        'M': function () { console.log('M'); },
-        'U': function () { unlockAnswers(); },
+        'U': function () { unlockAnswers(); }, //depreciated
         'N': function () { answerPop(who); },
         'M': function () { closeAll(); },
         'Q': function () { race('team1'); },
         'P': function () { race('team2'); },
         'L': function () { race('team3'); },
-        'Z': function () { FJ(); }, //add me to the normal js too!
+        'Z': function () { FJ(); },
         'S': function () { FJa(); },
         'C': function () { pointAdder('correct'); },
-        'V': function () { pointAdder('incorrect'); }
+        'V': function () { pointAdder('incorrect'); },
+        'K': function () { showKeyboard(); },
+        'I': function () { showInfo(); },
+        'S': function () { showSettings(); },
+        'H': function () { toggleHelp(); }
     });
     $(document).keyup(function(e) {
         if (e.keyCode == 27) { closeAll(); }
@@ -46,19 +48,29 @@ $(function() {
     //watch for a click on the proceed
     //need to have a shortcut here as well
     $('.proceed').click(function(){
-        //$(this).parent().hide('slow');
         console.log(who);
         answerPop(who);
     });
 
     $('.close').click(function(){
-        console.log('closer');
         closeAll();
+    });
 
-        //$(this).parent().hide('slow');
+    //infoBar Controls
+    $('#closeInfo').click(function(){
+        console.log('close the info bar');
+        toggleHelp();
+    });
+    $('#iconInfo').click(function(){
+        console.log('show the information');
+    });
+    $('#iconSettings').click(function(){
+        console.log('show the settings');
+    });
+    $('#iconKeyboard').click(function(){
+        console.log('show the keyboard shortucts');
     });
 });
-
 
 $(window).resize(function() {
   //resize just happened, pixels changed, change the pixels!
@@ -139,8 +151,13 @@ function setBounty(points){
     bounty = Number(points);
 }
 
+var pointable =0;
+
 function pointAdder(value) {
     //determine who might get points
+    if( !pointable ) {
+        return false;
+    }
     console.log(winningTeam);
     //get their points
     var teamPoints;
@@ -171,7 +188,7 @@ function pointAdder(value) {
     console.log('they now have' + teamPoints);
     var whoToChange = '#'+winningTeam+'Score';
     $(whoToChange).html('$'+teamPoints);
-
+    pointable = 0;
     sentancePop(who);
 
 }
@@ -226,6 +243,7 @@ function answerPop(who) {
     var whoa = '#' + who + 'a';
     $(whoa).show();
     $('#'+who).addClass('expired');
+    pointable = 1;
 }
 
 function FJ() {
@@ -234,6 +252,10 @@ function FJ() {
 
 function FJa() {
     $('#FJa').show();
+}
+
+function toggleHelp() {
+    $('#infoBar').toggleClass('hide');
 }
 
 function getWindowSize() {

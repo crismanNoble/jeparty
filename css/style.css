@@ -100,7 +100,7 @@ body {
 	filter: dropshadow(color=#000, offx=10, offy=10);
 }
 
-.close {
+div.close {
 	color: white;
 	font-family: arial;
 	font-weight: bold;
@@ -143,14 +143,27 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1980b0', endColorstr='#233168',GradientType=0 ); /* IE6-9 */
 }
 
-/*
+/*info bar styles*/
+#infoBar {
+	background: grey;
+	position: absolute;
+	text-align: center;
+	color: black;
+	left: 0;
+	top: 0;
+	margin: 4px;
+}
 
-title, bold and sans serif
+#infoBar .icon {
+	cursor: pointer;
+	padding: 2px;
+}
 
+.hide {
+	display: none;
+}
 
-
-Question is the wierd 60 fonts
-
-
-
-*/
+#closeInfo {
+	font-weight: bold;
+	cursor: pointer;
+}

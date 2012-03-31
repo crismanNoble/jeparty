@@ -1,25 +1,33 @@
 
 
 TODO:
-collect points
-Add a 3 player option
+
 Final Jeopardy
-Add setup screen
+Add setup / information screen
+touch version, flip between 2 and 3 player
 
 Keyboard Shortcuts
 Escape: Close question or answer popup
-U: Unlock Question
+U: Unlock Question (optional, default does not lock qustion)
 Q: Team 1 answer
 P: Team 2 answer
-L: Team 3 answer (not in yet)
+L: Team 3 answer
+N: Show Answer
 C: Corret Answer
 V: Incorrect Answer
-N: Show Answer
+M: Close all (same as escape)
+
 Z: FINAL JEOPARDY
 S: FINAL JEOPARDY ANSWER!
 
+K: Keyboard shortcut display
+I: Show Information
+S: Show Settings
+H: Show Info Bar / Help Bar
+
 Creddits:
 http://www.colorzilla.com/gradient-editor/
+www.glyphicons.com
 hotkeys plugin
 github
 Alec Chebeck, Vanna White
