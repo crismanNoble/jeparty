@@ -31,9 +31,6 @@ body {
 	cursor: pointer;
 }
 
-
-
-
 .expired {
 	color: grey;
 	cursor: normal;
@@ -152,7 +149,7 @@ div.close {
 	left: 0;
 	top: 0;
 	margin: 4px;
-	font-family: 'Entypo';
+	font-family: 'EntypoRegular';
 }
 
 #infoBar .icon {
