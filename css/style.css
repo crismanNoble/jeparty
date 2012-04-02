@@ -148,20 +148,37 @@ div.close {
 	color: black;
 	left: 0;
 	top: 0;
-	margin: 4px;
+}
+
+.icon {
+	cursor: pointer;
+	font-size: 30px;
 	font-family: 'EntypoRegular';
 }
 
-#infoBar .icon {
-	cursor: pointer;
-	padding: 2px;
+.icon:hover {
+	color: white;
 }
 
 .hide {
 	display: none;
 }
 
-#closeInfo {
-	font-weight: bold;
-	cursor: pointer;
+#infoBarTiny {
+	position: absolute;
+	top: 0;
+	left: 40px;
+	color: orange;
+	font-size: 16px;
+}
+.corner {
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-top: 20px solid black;
+	border-left: 20px solid black;
+	border-right: 20px solid transparent;
+	border-bottom: 20px solid transparent;
 }
